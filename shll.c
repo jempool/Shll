@@ -51,7 +51,7 @@ void prepararSalidaArchivo(int posicion, int* archivo, char ** args) {
 
 int main(int argc, char*argv[]) {
 
-    int p[2];
+    int p[2]; 
     char buf[512];
     FILE *swap;
 
@@ -81,10 +81,10 @@ int main(int argc, char*argv[]) {
                 fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC | S_IRWXU | S_IXOTH);
             }
 
-            if (doPipe) { // Con pipe //    cat README.md | wc -l
+            if (doPipe) { // Con pipe //
                 pid_t frk1 = fork();
                 if (frk1 == 0) {
-                    swap = freopen("swap.txt", "w+", stdout);
+                    swap = freopen(" ", "w+", stdout);
                     int aux = execvp(myargs[0], myargs);
                     fclose(swap);
                     if (aux == -1)printf("Este comando no pudo ser ejecutado\n");
@@ -99,7 +99,7 @@ int main(int argc, char*argv[]) {
                         int i = 0;
                         while (1) {
                             if (pipeArray[i] == NULL) {
-                                pipeArray[i] = "swap.txt";
+                                pipeArray[i] = " ";
                                 pipeArray[i + 1] = NULL;
                                 break;
                             }
